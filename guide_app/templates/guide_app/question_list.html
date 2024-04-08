@@ -1,0 +1,12 @@
+<!-- guide_app/templates/guide_app/question_list.html -->
+
+{% extends 'guide_app/base_template.html' %}
+
+{% block content %}
+  <h1>Questions</h1>
+  <ul>
+    {% for question in questions %}
+      <li>{{ question.title }} - {{ question.body }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
