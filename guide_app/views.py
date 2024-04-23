@@ -30,7 +30,7 @@ def appuser_create_view(request):
 @login_required
 def question_create(request):
     if request.method == 'POST':
-        form = QuestionForm(request.POST)
+        form = QuestionForm(request.POST, request.FILES)
         if form.is_valid():
             question = form.save(commit=False)
             question.user = request.user
@@ -44,7 +44,7 @@ def question_create(request):
 def question_update(request, pk):
     question = get_object_or_404(Question, pk=pk, user=request.user)
     if request.method == 'POST':
-        form = QuestionForm(request.POST, instance=question)
+        form = QuestionForm(request.POST, request.FILES, instance=question)
         if form.is_valid():
             form.save()
             return redirect('questions')

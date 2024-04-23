@@ -23,15 +23,24 @@ class AppUser(models.Model):
     
 
 
+# Add decorator for when not logged in
+
+# Class for the Question Model for the user to post, edit and delete questions
 class Question(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    image = models.ImageField(upload_to='questions_images/', blank=True, null=True)  # Allows image uploads for questions
 
     def __str__(self):
         return self.title
     
     def get_absolute_url(self):
         return reverse("Question_detail", args={"pk": self.pk})
+    
+
+class Tutorial(models.Model):
+    title = models.CharField(max_length= 200)
+    

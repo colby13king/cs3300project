@@ -1,0 +1,17 @@
+{% extends 'base_template.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Tutorials</h2>
+    <div class="row">
+        {% for tutorial in tutorials %}
+        <div class="col text-center">
+            <a href="{% url 'tutorial_detail' tutorial.id %}">
+                <img src="{% static tutorial.icon %}" alt="{{ tutorial.title }}" class="img-icon">
+                <p>{{ tutorial.title }}</p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

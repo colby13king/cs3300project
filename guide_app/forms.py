@@ -11,5 +11,5 @@ class AppUserForm(forms.ModelForm):
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
-        fields = ['title', 'body']
+        fields = ['title', 'body', 'image']
 
