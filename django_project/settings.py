@@ -142,3 +142,6 @@ os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+LOGIN_REDIRECT_URL = '/'  # Adjust this as needed, e.g., to the homepage or user dashboard
+LOGIN_URL = '/login/'
+

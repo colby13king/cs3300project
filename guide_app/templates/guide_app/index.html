@@ -4,10 +4,13 @@
 
 <!-- Replace block content in base_template.html -->
 {% block content %}
-<h1>Apple device help</h1>
-
-
-<h2>Add Model</h2>
+   
+<div class="container">
+    <h1>Welcome to Apple Device Help App</h1>
+    <p>This is the homepage of our application. From here, you can navigate to various parts of the site.</p>
+    <!-- Button to view all questions -->
+    <a href="{% url 'questions' %}" class="btn btn-primary">View All Questions</a>
+</div>
 
 
 {% endblock %}

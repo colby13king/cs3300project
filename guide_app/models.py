@@ -41,6 +41,18 @@ class Question(models.Model):
         return reverse("Question_detail", args={"pk": self.pk})
     
 
+
+class Comment(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    text = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.text[:20]  
+
 class Tutorial(models.Model):
     title = models.CharField(max_length= 200)
     
+
+

@@ -1,0 +1,31 @@
+{% extends 'guide_app/base_template.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ question.title }}</h1>
+    <p>{{ question.body }}</p>
+    {% if question.image %}
+        <img src="{{ question.image.url }}" alt="{{ question.title }}" style="width: 100%; max-width: 600px;">
+    {% endif %}
+    <h2>Comments</h2>
+    <div>
+        {% for comment in question.comments.all %}
+            <div>
+                <strong>{{ comment.author }}</strong>
+                <p>{{ comment.text }}</p>
+                <p>{{ comment.created_date }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <h2>Add a comment</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Comment</button>
+    </form>
+    <!-- Delete button at the bottom of the content -->
+    <div class="mt-4">
+        <a href="{% url 'question_delete' question.pk %}" class="btn btn-danger">Delete Question</a>
+    </div>
+</div>
+{% endblock %}
