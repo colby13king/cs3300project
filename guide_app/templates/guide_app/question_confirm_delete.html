@@ -1,10 +1,12 @@
 {% extends 'guide_app/base_template.html' %}
 
 {% block content %}
-<h1>Delete Question</h1>
-<p>Are you sure you want to delete "{{ object.title }}"?</p>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Confirm</button>
-</form>
+<div class="container">
+    <h1>Are you sure you want to delete "{{ object.title }}"?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Confirm Delete</button>
+        <a href="{% url 'question_detail' object.pk %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
 {% endblock %}

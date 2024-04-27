@@ -1,12 +1,21 @@
-<!-- guide_app/templates/guide_app/question_list.html -->
-
 {% extends 'guide_app/base_template.html' %}
 
 {% block content %}
-  <h1>Questions</h1>
-  <ul>
-    {% for question in questions %}
-      <li>{{ question.title }} - {{ question.body }}</li>
-    {% endfor %}
-  </ul>
+<div class="container">
+    <h1>All Questions</h1>
+    <div class="list-group mt-4">
+        {% for question in questions %}
+            <a href="{% url 'question_detail' question.pk %}" class="list-group-item list-group-item-action">
+                <h5 class="mb-1">{{ question.title }}</h5>
+                <p class="mb-1">{{ question.body }}</p>
+                {% if question.image %}
+                    <img src="{{ question.image.url }}" alt="Image for {{ question.title }}" style="height: 100px;">
+                {% endif %}
+                <small>Posted on {{ question.created_at|date:"Y-m-d H:i" }}</small>
+            </a>
+        {% empty %}
+            <p>No questions have been posted yet.</p>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
